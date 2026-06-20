@@ -1,0 +1,34 @@
+GET http://localhost:5259/games/
+
+
+###
+GET http://localhost:5259/games/5
+
+
+###
+POST http://localhost:5259/games
+Content-Type: application/json
+
+{
+  "name": "Super Mario Bros",
+  "genre": "Platformer",
+  "price": 59.99,
+  "releaseDate": "2023-10-20"
+}
+
+
+###
+PUT http://localhost:5259/games/3
+Content-Type: application/json
+
+{
+  "name": "Super Mario Bros",
+  "genre": "Platformer",
+  "price": 59.99,
+  "releaseDate": "2023-10-20"
+}
+
+
+
+###
+DELETE http://localhost:5259/games/3
