@@ -1,5 +1,6 @@
 using GameStore.Api.Data;
 using GameStore.Api.Endpoints;
+using GameStore.Api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +15,7 @@ builder.Services.AddValidation();
 // note: replaced by `.MigrateDb()` code, which read the migration file and do something like init/update db
 
 // ps: stop all ongoing process before doing migration
-var connString = "Data Source=GameStore.db";
-builder.Services.AddSqlite<GameStoreContext>(connString);
+builder.AddGameStoreDb(); // seed data
 
 var app = builder.Build();
 
