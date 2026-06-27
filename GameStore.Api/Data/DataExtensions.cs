@@ -18,6 +18,16 @@ public static class DataExtensions
         // overwrite configurations in current terminal
         // cli: $env:ConnectionStrings__GameStore="Data Source=Production.db"
         var connString = builder.Configuration.GetConnectionString("GameStore");
+
+        // AddSqlite is equivalent to add scope
+        // scoped dependency lifetime is per http request
+
+        // DbContext has scoped service lifetime because:
+        // 1. It ensures that a new instance of DbContext is created per request
+        // 2. DB connections are a limited and expensive resource
+        // 3. DbContext is not thread-safe. Scoped avoids to concurrency issues
+        // 4. Makes it easier to manage transactions and encure data consistency    
+
         builder.Services.AddSqlite<GameStoreContext>(
         connString,
         optionsAction: options => options.UseSeeding((context, _) =>

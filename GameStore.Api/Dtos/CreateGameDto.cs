@@ -8,8 +8,8 @@ public record CreateGameDto(
     string Name,
 
     [Required]
-    [StringLength(20)]
-    string Genre,
+    [Range(1, 50)]
+    int GenreId,
 
     [Required]
     [Range(1, 999)]
